@@ -27,15 +27,15 @@ BSP_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/downloa
 ROOTFS_IMAGE_FILE_URL=http://bit.ly/pynq_rootfs_arm_v2_6
 
 echo "Status: Fetching pre-built rootfs for ARM 32"
-if [ -f "$ROOTFS_ZIP_FILE" ]; then 
-	echo "Status: $ROOTFS_ZIP_FILE -> already exists"
+if [ -f "$ROOTFS_IMAGE_FILE" ]; then 
+	echo "Status: $ROOTFS_IMAGE_FILE -> already exists"
 else
 	wget "$ROOTFS_IMAGE_FILE_URL" -O "$ROOTFS_ZIP_FILE"
 	unzip "$ROOTFS_ZIP_FILE"
 fi
 
 echo "Status: Fetching pre-built BSP"
-if [ -f "$BSP_FILE_URL/$BSP_FILE" ]; then 
+if [ -f "$BSP_FILE_PATH/$BSP_FILE" ]; then 
 	echo "Status: $BSP_FILE -> already exists"
 else
 	wget "$BSP_FILE_URL/$BSP_FILE" -O "$BSP_FILE_PATH/$BSP_FILE"
