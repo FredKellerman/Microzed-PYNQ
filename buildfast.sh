@@ -7,7 +7,7 @@
 # be reading this.
 #
 #   git clone --branch image_v2.6.0 https://github.com/Xilinx/PYNQ
-#   git clone --branch image_v2.6.0 https://github.com/FredKellerman/Microzed-PYNQ
+#   git clone --branch image_v2.6.0 https://github.com/FredKellerman/Microzed7010-PYNQ
 #
 # After cloning make sure you have the correct branch and then run this script.
 # Adjust file names and paths if you want to do something different.
@@ -23,7 +23,7 @@ START_DIR=$PWD
 PYNQ_GIT_PATH="$START_DIR/../PYNQ"
 MICROZED_BOARDDIR="$START_DIR"
 BSP_FILE_PATH=microzed
-BSP_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
+BSP_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/download/v2.6.0
 ROOTFS_IMAGE_FILE_URL=http://bit.ly/pynq_rootfs_arm_v2_6
 
 echo "Status: Fetching pre-built rootfs for ARM 32"
