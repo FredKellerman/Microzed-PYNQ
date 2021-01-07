@@ -6,8 +6,8 @@
 # directory (which at least you must have pulled down the Microzed-PYNQ) to
 # be reading this.
 #
-#   git clone --branch image_v2.6.0 https://github.com/Xilinx/PYNQ
-#   git clone --branch image_v2.6.0 https://github.com/FredKellerman/Microzed7010-PYNQ
+#   git clone --branch 'branch name' https://github.com/Xilinx/PYNQ
+#   git clone --branch 'branch name' https://github.com/FredKellerman/Microzed7010-PYNQ
 #
 # After cloning make sure you have the correct branch and then run this script.
 # Adjust file names and paths if you want to do something different.
