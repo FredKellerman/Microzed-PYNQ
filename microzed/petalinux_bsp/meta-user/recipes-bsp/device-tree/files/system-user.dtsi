@@ -1,21 +1,12 @@
 /include/ "system-conf.dtsi"
 /{
-	amba {
-
-		ethernet@e000b000 {
-			phy-handle = <&ethernet_phy>;
-			ethernet_phy: ethernet-phy@1{
-				reg = <1>;
-			};
-		};
+	usb_phy0: phy0 {
+			compatible = "ulpi-phy";
+			#phy-cells = <0>;
+			reg = <0xe0002000 0x1000>;
+			view-port = <0x170>;
+			drv-vbus;
 	};
-        usb_phy0: phy0 {
-                compatible = "ulpi-phy";
-                #phy-cells = <0>;
-                reg = <0xe0002000 0x1000>;
-                view-port = <0x170>;
-                drv-vbus;
-        };
 };
 
 &spi1 {
