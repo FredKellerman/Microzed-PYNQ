@@ -1,0 +1,21 @@
+diff --git a/pynq/ps.py b/pynq/ps.py
+index 8e9727f6..1c19c22e 100755
+--- a/pynq/ps.py
++++ b/pynq/ps.py
+@@ -595,14 +595,14 @@ class _ClocksZynq(_ClocksBase):
+     `Clocks` instead.
+ 
+     """
+-    DEFAULT_SRC_CLK_MHZ = 50.0
++    DEFAULT_SRC_CLK_MHZ = 33.3333333
+     SLCR_BASE_ADDRESS = 0xF8000000
+ 
+     VALID_CLOCK_DIV_PRODUCTS = {i*j: (i, j)
+                                 for i in range(1 << 6)
+                                 for j in range(1 << 6)}
+ 
+-    def __init__(self, ref_clk_mhz=50.0):
++    def __init__(self, ref_clk_mhz=DEFAULT_SRC_CLK_MHZ):
+         self._ref_clk_mhz = ref_clk_mhz
+ 
+         from .mmio import MMIO

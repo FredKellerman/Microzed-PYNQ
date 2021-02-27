@@ -12,6 +12,7 @@
 ##################################
 # Various path and file settings #
 ##################################
+
 BSP_FILE=microzed.bsp
 ROOTFS_ZIP_FILE=pynq-rootfs-arm-2p6.zip
 ROOTFS_IMAGE_FILE=bionic.arm.2.6.0_2020_10_19.img
@@ -23,27 +24,19 @@ PYNQ_GIT_LOCAL_PATH="$START_DIR/PYNQ"
 GIT_BRANCH="image_v2.6.0"
 MICROZED_BOARDDIR="$START_DIR"
 BSP_FILE_PATH=microzed
-PATCH_SEMAPHORE_FILE=$START_DIR/.pynq_patched
 BSP_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/download/v2.6.0
 ROOTFS_IMAGE_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/download/v2.6.0
 
 ##################################
 # Fetching and compiling         #
 ##################################
+
 echo "Status: Fetching PYNQ git $PYNQ_GIT_LOCAL_PATH"
 if [ -d "$PYNQ_GIT_LOCAL_PATH" ]; then
-	echo "Status: PYNQ repo already cloned: $PYNQ_GIT_LOCAL_PATH"
+	echo "Status: PYNQ repo -> already cloned $PYNQ_GIT_LOCAL_PATH"
 else
-	rm $PATCH_SEMAPHORE_FILE
 	git clone --branch $GIT_BRANCH https://github.com/Xilinx/PYNQ $PYNQ_GIT_LOCAL_PATH
-fi
-
-echo "Status: Patching PYNQ source"
-if [ -f "$PATCH_SEMAPHORE_FILE" ]; then
-	echo "Status: PYNQ already patched"
-else
-	git -C $PYNQ_GIT_LOCAL_PATH apply $MICROZED_BOARDDIR/clock_rate_minized_fix.patch
-	touch $PATCH_SEMAPHORE_FILE
+	echo "Status: PYNQ repo cloned to branch: $GIT_BRANCH"
 fi
 
 echo "Status: Fetching pre-built rootfs for ARM 32"
@@ -51,7 +44,7 @@ if [ -f "$ROOTFS_IMAGE_FILE" ]; then
 	echo "Status: $ROOTFS_IMAGE_FILE -> already exists"
 else
 	if [ -f "$ROOTFS_ZIP_FILE" ]; then
-		echo "Status: zip file already exists"
+		echo "Status: zip file -> already exists"
 	else
 		wget "$ROOTFS_IMAGE_FILE_URL/$ROOTFS_ZIP_FILE" -O "$ROOTFS_ZIP_FILE"
 	fi
@@ -107,4 +100,3 @@ else
 fi
 
 exit 0
-
