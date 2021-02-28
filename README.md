@@ -15,7 +15,7 @@ To rebuild your own Microzed PYNQ image:
 * Setup a 'build user' with passwordless sudo
 * Clone PYNQ from https://github.com/Xilinx/PYNQ **and checkout branch: image_v2.6.0**
 * From the clone and proper branch **execute ./sdbuild/scripts/setup_host.sh**
-* Reinstall any requested additonal apt packages that setup_host.sh asks for
+* Install any requested additonal apt packages that setup_host.sh asks for
 * Once setup_host.sh is successful, **reboot and re-login**
 * You may remove the just cloned PYNQ git repo
 * Clone this repo and cd into it
