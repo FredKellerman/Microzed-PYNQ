@@ -14,18 +14,18 @@
 ##################################
 
 BSP_FILE=microzed.bsp
+BSP_FILE_PATH=microzed
+BSP_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
 ROOTFS_ZIP_FILE=pynq-rootfs-arm-2p6.zip
 ROOTFS_IMAGE_FILE=bionic.arm.2.6.0_2020_10_19.img
-IMAGE_FILE=microzed-2.6.0.img
-OVERLAY_FILE_PATH=base-overlay/microzed_base_overlay
+ROOTFS_IMAGE_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
+SD_IMAGE_FILE=microzed-2.6.0.img
+OVERLAY_FILE_PATH=microzed/base_overlay
 OVERLAY_NAME=microzed_base_overlay
 START_DIR=$PWD
-PYNQ_GIT_LOCAL_PATH="$START_DIR/PYNQ"
-GIT_BRANCH="image_v2.6.0"
+PYNQ_GIT_LOCAL_PATH="$START_DIR/PYNQ-git"
+PYNQ_GIT_BRANCH="image_v2.6.0"
 MICROZED_BOARDDIR="$START_DIR"
-BSP_FILE_PATH=microzed
-BSP_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/download/v2.6.0
-ROOTFS_IMAGE_FILE_URL=https://github.com/FredKellerman/Microzed7010-PYNQ/releases/download/v2.6.0
 
 ##################################
 # Fetching and compiling         #
@@ -35,8 +35,8 @@ echo "Status: Fetching PYNQ git $PYNQ_GIT_LOCAL_PATH"
 if [ -d "$PYNQ_GIT_LOCAL_PATH" ]; then
 	echo "Status: PYNQ repo -> already cloned $PYNQ_GIT_LOCAL_PATH"
 else
-	git clone --branch $GIT_BRANCH https://github.com/Xilinx/PYNQ $PYNQ_GIT_LOCAL_PATH
-	echo "Status: PYNQ repo cloned to branch: $GIT_BRANCH"
+	git clone --branch $PYNQ_GIT_BRANCH https://github.com/Xilinx/PYNQ $PYNQ_GIT_LOCAL_PATH
+	echo "Status: PYNQ repo cloned to branch: $PYNQ_GIT_BRANCH"
 fi
 
 echo "Status: Fetching pre-built rootfs for ARM 32"
@@ -91,8 +91,8 @@ cd "$PYNQ_GIT_LOCAL_PATH/sdbuild"
 make clean
 make PREBUILT="$START_DIR/$ROOTFS_IMAGE_FILE" BOARDDIR="$MICROZED_BOARDDIR"
 
-if [ -f "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$IMAGE_FILE" ]; then
-	cp "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$IMAGE_FILE" "$START_DIR/."
+if [ -f "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$SD_IMAGE_FILE" ]; then
+	cp "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$SD_IMAGE_FILE" "$START_DIR/."
 	echo "Status: Done building PYNQ image"
 else
 	echo "Status: Build FAILED"

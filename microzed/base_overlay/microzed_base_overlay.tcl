@@ -44,7 +44,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 set overlay_name "microzed_base_overlay"
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project ${overlay_name} ${overlay_name} -part xc7z010clg400-1
+   create_project ${overlay_name} ${overlay_name} -part xc7z020clg400-1
 }
 
 # CHANGE DESIGN NAME HERE
