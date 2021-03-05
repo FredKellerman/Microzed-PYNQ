@@ -1,5 +1,5 @@
-overlay_name := microzed
-design_name := microzed
+overlay_name := microzed_base_overlay
+design_name := microzed_base_overlay
 
 all: block_design bitstream check_timing
 	@echo

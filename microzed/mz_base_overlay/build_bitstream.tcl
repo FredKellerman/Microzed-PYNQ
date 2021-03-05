@@ -1,5 +1,5 @@
-set overlay_name "microzed"
-set design_name "microzed"
+set overlay_name "microzed_base_overlay"
+set design_name "microzed_base_overlay"
 
 # open block design
 open_project ./${overlay_name}/${overlay_name}.xpr

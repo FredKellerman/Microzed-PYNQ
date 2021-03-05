@@ -41,7 +41,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 # project, but make sure you do not have an existing project
 # <./myproj/project_1.xpr> in the current working folder.
 
-set overlay_name "microzed"
+set overlay_name "microzed_base_overlay"
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project ${overlay_name} ${overlay_name} -part xc7z010clg400-1
@@ -49,7 +49,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name microzed
+set design_name microzed_base_overlay
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
