@@ -1,0 +1,22 @@
+/include/ "system-conf.dtsi"
+/{
+	usb_phy0: phy0 {
+			compatible = "ulpi-phy";
+			#phy-cells = <0>;
+			reg = <0xe0002000 0x1000>;
+			view-port = <0x170>;
+			drv-vbus;
+	};
+};
+
+&spi1 {
+	spidev@0x00 {
+		compatible = "spidev";
+		spi-max-frequency = <50000000>;
+		reg = <0>;
+		};
+	};
+
+&usb0 {
+        usb-phy = <&usb_phy0>;
+};

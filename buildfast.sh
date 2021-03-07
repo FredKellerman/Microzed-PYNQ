@@ -14,18 +14,18 @@
 ##################################
 
 BSP_FILE=microzed.bsp
-BSP_FILE_PATH=microzed
+BSP_FILE_PATH=mz-7020/microzed-7020
 BSP_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
 ROOTFS_ZIP_FILE=pynq-rootfs-arm-2p6.zip
 ROOTFS_IMAGE_FILE=bionic.arm.2.6.0_2020_10_19.img
 ROOTFS_IMAGE_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
-SD_IMAGE_FILE=microzed-2.6.0.img
-OVERLAY_FILE_PATH=microzed/base_overlay
+SD_IMAGE_FILE=microzed-7020-2.6.0.img
+OVERLAY_FILE_PATH=mz-7020/microzed-7020/base_overlay
 OVERLAY_NAME=microzed_base_overlay
 START_DIR=$PWD
 PYNQ_GIT_LOCAL_PATH="$START_DIR/PYNQ-git"
 PYNQ_GIT_BRANCH="image_v2.6.0"
-MICROZED_BOARDDIR="$START_DIR"
+MICROZED_BOARDDIR="$START_DIR/mz-7020"
 
 ##################################
 # Fetching and compiling         #

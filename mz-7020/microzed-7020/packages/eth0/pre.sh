@@ -8,5 +8,5 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 sudo cp $script_dir/eth0 $target/etc/network/interfaces.d
 
-echo 'pynq-mz' | sudo tee $target/etc/hostname
+echo 'pynq-mz7020' | sudo tee $target/etc/hostname
 
