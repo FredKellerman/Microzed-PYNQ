@@ -15,11 +15,12 @@
 
 # BOARD_TYPE can be either 7010 or 7020
 BOARD_TYPE=7020
-BOARD_TYPE=7010
+#BOARD_TYPE=7010
 
 BSP_FILE=microzed.bsp
 BSP_FILE_PATH=mz-$BOARD_TYPE/microzed-$BOARD_TYPE
 BSP_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
+ROOTFS_TMP_DIR=rootfs_tmp
 ROOTFS_ZIP_FILE=pynq-rootfs-arm-2p6.zip
 ROOTFS_IMAGE_FILE=bionic.arm.2.6.0_2020_10_19.img
 ROOTFS_IMAGE_FILE_URL=https://github.com/FredKellerman/Microzed-PYNQ/releases/download/v2.6.0
@@ -35,6 +36,9 @@ MICROZED_BOARDDIR="$START_DIR/mz-$BOARD_TYPE"
 # Fetching and compiling         #
 ##################################
 
+echo "Status: creating dir for rootfs"
+mkdir $ROOTFS_TMP_DIR
+
 echo "Status: Fetching PYNQ git $PYNQ_GIT_LOCAL_PATH"
 if [ -d "$PYNQ_GIT_LOCAL_PATH" ]; then
 	echo "Status: PYNQ repo -> already cloned $PYNQ_GIT_LOCAL_PATH"
@@ -44,19 +48,20 @@ else
 fi
 
 echo "Status: Fetching pre-built rootfs for ARM 32"
-if [ -f "$ROOTFS_IMAGE_FILE" ]; then 
-	echo "Status: $ROOTFS_IMAGE_FILE -> already exists"
+if [ -f "$ROOTFS_TMP_DIR/$ROOTFS_IMAGE_FILE" ]; then 
+	echo "Status: image file $ROOTFS_TMP_DIR/$ROOTFS_IMAGE_FILE -> already exists"
 else
-	if [ -f "$ROOTFS_ZIP_FILE" ]; then
+	if [ -f "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE" ]; then
 		echo "Status: zip file -> already exists"
 	else
-		wget "$ROOTFS_IMAGE_FILE_URL/$ROOTFS_ZIP_FILE" -O "$ROOTFS_ZIP_FILE"
+		wget "$ROOTFS_IMAGE_FILE_URL/$ROOTFS_ZIP_FILE" -O "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE"
 	fi
-	fsize=$(wc -c <"$ROOTFS_ZIP_FILE")
+	fsize=$(wc -c <"$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE")
+	echo $fsize
 	if [ $fsize -gt "0" ]; then
-		unzip "$ROOTFS_ZIP_FILE"
+		unzip "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE" -d "$ROOTFS_TMP_DIR"
 	else
-		rm $ROOTFS_ZIP_FILE
+		rm "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE"
 		echo "Error: Failed to fetch rootfs zip file!"
 		exit -1
 	fi
@@ -93,7 +98,7 @@ fi
 echo "Status: Building PYNQ SD Image"
 cd "$PYNQ_GIT_LOCAL_PATH/sdbuild"
 make clean
-make PREBUILT="$START_DIR/$ROOTFS_IMAGE_FILE" BOARDDIR="$MICROZED_BOARDDIR"
+make PREBUILT="$START_DIR/$ROOTFS_TMP_DIR/$ROOTFS_IMAGE_FILE" BOARDDIR="$MICROZED_BOARDDIR"
 
 if [ -f "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$SD_IMAGE_FILE" ]; then
 	cp "$PYNQ_GIT_LOCAL_PATH/sdbuild/output/$SD_IMAGE_FILE" "$START_DIR/."
