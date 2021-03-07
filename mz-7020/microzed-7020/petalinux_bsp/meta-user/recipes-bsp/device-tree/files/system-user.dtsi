@@ -9,6 +9,11 @@
 	};
 };
 
+/* Add various PS devices into user space /dev */
+&usb0 {
+        usb-phy = <&usb_phy0>;
+};
+
 &spi1 {
 	spidev@0x00 {
 		compatible = "spidev";
@@ -17,6 +22,7 @@
 		};
 	};
 
-&usb0 {
-        usb-phy = <&usb_phy0>;
+&i2c0 {
+        status = "okay";
 };
+
