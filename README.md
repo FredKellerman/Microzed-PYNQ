@@ -18,8 +18,8 @@ To rebuild your own Microzed PYNQ image:
 * Install any requested additonal apt packages that setup_host.sh asks for
 * Once setup_host.sh is successful, **reboot and re-login**
 * You may remove the just cloned PYNQ git repo
-* Clone this repo and cd into it
-* **Run ./buildfast.sh**
+* **Clone this Microzed-PYNQ** repo and cd into it
+* **Run ./buildfast.sh** NOTE: by default this builds for 7020, for 7010 set BOARD_TYPE=7010 in buildfast.sh 
 * **Wait** for the SD card image generation to complete: microzed-x.x.x.img
 * Use Etcher to copy .img onto >= 16GB micro SD card
 * Setup the Microzed dip switches to boot from SD card, insert card, **power-up and get to work!**
