@@ -1,6 +1,6 @@
 # Microzed-PYNQ
 
-This free and open source custom port of PYNQ is a product of 6d7 Technologies LLC. The final SD card image should work on all Microzed Variants, it has been tested on 7010 and 7020 versions.
+This free and open source custom port of PYNQ is a product of 6d7 Technologies LLC. The final SD card image should work on all Microzed board variants.  It has been tested the 7010 and 7020 versions.
 
 PYNQ is a registered trademark owned by Xilinx Corporation.
 
