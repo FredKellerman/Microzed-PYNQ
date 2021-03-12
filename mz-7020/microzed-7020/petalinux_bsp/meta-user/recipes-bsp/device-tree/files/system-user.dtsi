@@ -10,6 +10,34 @@
 };
 
 /* Add various PS devices into user space /dev */
+&gem0 {
+        status = "okay";
+    phy-handle = <&phy0>;
+        phy-mode = "rgmii-id";
+    phy0: phy@0 {
+        compatible = "marvell,88e1510";
+        device_type = "ethernet-phy";
+        reg = <0x0>;
+        /* linux,phandle = <0x5>; */
+                /* phandle = <0x5>; */
+        /* 
+         * modify PHY registers to:
+         * Reg 3_16
+         * LED[1] bits [7:4] = 0x4 = BLINK=activity, Off=no activity
+         * LED[0] bits [3:0] = 0x0 = On - Link, Off - No Link
+         * Reg 3_17
+         * LED[1:0] = ON-drive low, OFF-high
+         * Reg 3_18
+         * LED[0] bits [3:2] = link speed LED blink off period = 170ms
+         * LED[0] bits [1:0] = link speed LED blink on period = 340ms
+         */
+        marvell,reg-init = <3 16 0xff00 0x40>,
+                           <3 17 0xfff0 0x0>,
+                           <3 18 0xfff0 0x6>;
+    };
+
+};
+
 &usb0 {
         usb-phy = <&usb_phy0>;
 };
