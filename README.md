@@ -6,23 +6,26 @@ PYNQ is a registered trademark owned by Xilinx Corporation.
 
 Microzed is Copyright Avnet Inc.
 
-**Use a VM or machine that is not critical, installing the build tools will make various changes to your PC**
+**I recommend for the first time using a VM or non VM machine that is not used for critical work.  Installing the build tools will make various changes to your machine, make sure you know what you're getting into before you modify a critical work PC.  This process requires a passwordless sudo user for example.**
 
-To rebuild your own Microzed PYNQ image:
+To rebuild your own Microzed PYNQ image you will need to complete the following pre-build steps.  If you are already setup to build v2.6 PYNQ, skip these:
 
 * You will need at least 16GB of PC RAM and 30GB+ just for building the SD Image, not including space for the build tools
-* Install Petalinux and Vivado v2020.1 tools on Ubuntu 18.04 LTS
-* Setup a 'build user' with passwordless sudo
+* Install Petalinux v2020.1, Vivado v2020.1 and Ubuntu 18.04 LTS on an x86 PC
+* Give an Ubuntu 'build user' passwordless sudo permission
 * Clone PYNQ from https://github.com/Xilinx/PYNQ **and checkout branch: image_v2.6.0**
-* From the clone and proper branch **execute ./sdbuild/scripts/setup_host.sh**
-* Install any requested additonal apt packages that setup_host.sh asks for
+* From the clone and proper branch **execute "./sdbuild/scripts/setup_host.sh"**
+* Install any requested additonal Debian apt packages that setup_host.sh asks for
 * Once setup_host.sh is successful, **reboot and re-login**
 * You may remove the just cloned PYNQ git repo
-* **Clone this Microzed-PYNQ** repo and cd into it
-* **Run ./buildfast.sh** NOTE: by default this builds for 7020, for 7010 set BOARD_TYPE=7010 in buildfast.sh 
+
+Once the previous steps have been completed you may begin building PYNQ for the Microzed 7010 or 7020:
+
+* **Clone this Microzed-PYNQ** repo and **cd** into it
+* **Run "./buildfast.sh"** NOTE: by default this builds for 7020, for 7010 set BOARD_TYPE=7010 in buildfast.sh 
 * **Wait** for the SD card image generation to complete: microzed-x-x.x.x.img
-* Use Etcher to copy .img onto >= 16GB micro SD card
-* Setup the Microzed dip switches to boot from SD card, insert card, **power-up and get to work!**
+* Use Etcher to copy the .img file onto a >= 16GB micro SD card
+* Setup the Microzed dip switches to boot from SD card, insert SD card, **power-up and get to work!**
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
