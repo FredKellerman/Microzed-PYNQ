@@ -21,8 +21,9 @@ To rebuild your own Microzed PYNQ image you will need to complete the following 
 
 Once the previous steps have been completed you may begin building PYNQ for the Microzed 7010 or 7020:
 
+* From a cmd line bash shell terminal, make sure Vivado 2020.1 and Petalinux v2020.1 are in your path.  This is usually done with "source"
 * **Clone this Microzed-PYNQ** repo and **cd** into it
-* **Run "./buildfast.sh"** NOTE: by default this builds for 7020, for 7010 set BOARD_TYPE=7010 in buildfast.sh 
+* **Execute "./buildfast.sh"** NOTE: by default this builds for 7020, for 7010 set BOARD_TYPE=7010 in buildfast.sh 
 * **Wait** for the SD card image generation to complete: microzed-x-x.x.x.img
 * Use Etcher to copy the .img file onto a >= 16GB micro SD card
 * Setup the Microzed dip switches to boot from SD card, insert SD card, **power-up and get to work!**
