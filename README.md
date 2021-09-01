@@ -1,12 +1,12 @@
 # Microzed-PYNQ
 
-This free and open source custom port of PYNQ is a product of 6d7 Technologies LLC. The final SD card image should work on all Microzed board variants.  It has been tested on both the 7010 and 7020 variants.
+This repo contains build scripts and source code to enable PYNQ on the Avnet MicroZed baoards.  The final SD card image should work on all Microzed board variants.  It has been tested on both the 7010 and 7020 versions.
 
-PYNQ is a registered trademark owned by Xilinx Corporation.
+PYNQ, Python productivity for Zynq is a framework developed by Xilinx Corporation.  See http://www.pynq.io
 
 Microzed is Copyright Avnet Inc.
 
-**I recommend for the first time using a VM or non VM machine that is not used for critical work.  Installing the build tools will make various changes to your machine, make sure you know what you're getting into before you modify a critical work PC.  This process requires a passwordless sudo user for example.**
+**To build the images the first time I recommend using a VM or non VM machine that is not used for critical work.  Installing the build tools will make various changes to your machine, make sure you know what you're getting into before you modify a critical work PC.  This process requires a passwordless sudo user for example.**
 
 To rebuild your own Microzed PYNQ image you will need to complete the following pre-build steps.  If you are already setup to build v2.6 PYNQ, skip these:
 
