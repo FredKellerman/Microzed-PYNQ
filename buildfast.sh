@@ -29,8 +29,11 @@ OVERLAY_FILE_PATH=mz-$BOARD_TYPE/microzed-$BOARD_TYPE/base_overlay
 OVERLAY_NAME=microzed_base_overlay
 START_DIR=$PWD
 PYNQ_GIT_LOCAL_PATH="$START_DIR/PYNQ-git"
-PYNQ_GIT_BRANCH="image_v2.6.0"
+#PYNQ_GIT_BRANCH="image_v2.7.0"
+PYNQ_GIT_BRANCH="image_v2.7"
 MICROZED_BOARDDIR="$START_DIR/mz-$BOARD_TYPE"
+#GIT_REPO_URL="https://github.com/Xilinx/PYNQ"
+GIT_REPO_URL="https://github.com/schelleg/PYNQ"
 
 ##################################
 # Fetching and compiling         #
@@ -43,7 +46,7 @@ echo "Status: Fetching PYNQ git $PYNQ_GIT_LOCAL_PATH"
 if [ -d "$PYNQ_GIT_LOCAL_PATH" ]; then
 	echo "Status: PYNQ repo -> already cloned $PYNQ_GIT_LOCAL_PATH"
 else
-	git clone --branch $PYNQ_GIT_BRANCH https://github.com/Xilinx/PYNQ $PYNQ_GIT_LOCAL_PATH
+	git clone --branch $PYNQ_GIT_BRANCH $GIT_REPO_URL $PYNQ_GIT_LOCAL_PATH
 	echo "Status: PYNQ repo cloned to branch: $PYNQ_GIT_BRANCH"
 fi
 
