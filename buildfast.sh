@@ -54,7 +54,7 @@ else
 	if [ -f "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE" ]; then
 		echo "Status: zip file -> already exists"
 	else
-		wget "$ROOTFS_IMAGE_FILE_URL/$ROOTFS_ZIP_FILE" -O "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE"
+		wget -c "$ROOTFS_IMAGE_FILE_URL/$ROOTFS_ZIP_FILE" -O "$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE"
 	fi
 	fsize=$(wc -c <"$ROOTFS_TMP_DIR/$ROOTFS_ZIP_FILE")
 	echo $fsize
@@ -71,7 +71,7 @@ echo "Status: Fetching pre-built BSP"
 if [ -f "$BSP_FILE_PATH/$BSP_FILE" ]; then 
 	echo "Status: $BSP_FILE -> already exists"
 else
-	wget "$BSP_FILE_URL/$BSP_FILE" -O "$BSP_FILE_PATH/$BSP_FILE"
+	wget -c "$BSP_FILE_URL/$BSP_FILE" -O "$BSP_FILE_PATH/$BSP_FILE"
 	fsize=$(wc -c <"$BSP_FILE_PATH/$BSP_FILE")
 	if [ $fsize -eq "0" ]; then
 		rm "$BSP_FILE_PATH/$BSP_FILE"
