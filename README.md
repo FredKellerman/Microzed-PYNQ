@@ -1,6 +1,6 @@
 # Microzed-PYNQ
 
-This repo contains build scripts and source code to enable PYNQ on the Avnet MicroZed baoards.  The final SD card image should work on all Microzed board variants.  It has been tested on both the 7010 and 7020 versions.
+This repo contains build scripts and source code to enable PYNQ on the Avnet MicroZed boards.  The final SD card image should work on all Microzed board variants.  It has been tested on both the 7010 and 7020 versions.
 
 PYNQ, Python productivity for Zynq is a framework developed by Xilinx Corporation.  See http://www.pynq.io
 
